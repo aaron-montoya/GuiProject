@@ -5,7 +5,9 @@ import gui.controller.GUIAppController;
 import java.awt.Color;
 import javax.swing.JButton;
 import javax.swing.SpringLayout;
-import java.awt.Font;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GUIPanel extends JPanel
 {
@@ -19,13 +21,10 @@ public class GUIPanel extends JPanel
 		this.appController = appController;
 		firstButton = new JButton("Clik me plz :D");
 		appLayout = new SpringLayout();
-		appLayout.putConstraint(SpringLayout.NORTH, firstButton, 205, SpringLayout.NORTH, this);
-		appLayout.putConstraint(SpringLayout.WEST, firstButton, 145, SpringLayout.WEST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, firstButton, -209, SpringLayout.SOUTH, this);
-		appLayout.putConstraint(SpringLayout.EAST, firstButton, -141, SpringLayout.EAST, this);
 		
 		setupPanel();
 		setupLayout();
+		setupListeners();
 	}
 	
 	/**
@@ -45,10 +44,39 @@ public class GUIPanel extends JPanel
 	 */
 	private void setupLayout()
 	{
+		appLayout.putConstraint(SpringLayout.NORTH, firstButton, 205, SpringLayout.NORTH, this);
+		appLayout.putConstraint(SpringLayout.WEST, firstButton, 145, SpringLayout.WEST, this);
+		appLayout.putConstraint(SpringLayout.SOUTH, firstButton, -209, SpringLayout.SOUTH, this);
+		appLayout.putConstraint(SpringLayout.EAST, firstButton, -141, SpringLayout.EAST, this);
 	}
 	
 	private void setupListeners()
 	{
+		firstButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				changeScreenColor();
+			}
+		});
+	}
+	
+	private void changeScreenColor()
+	{
+		int red = (int) (Math.random() * 256);
+		int green = (int) (Math.random() * 256);
+		int blue = (int) (Math.random() * 256);
 		
+		this.setBackground(new Color(red, green, blue));
 	}
 }
+
+
+
+
+
+
+
+
+
+
