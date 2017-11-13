@@ -19,7 +19,6 @@ public class GUIFrame extends JFrame
 	{
 		this.setTitle("Window title will go here");
 		this.setSize(500, 500);
-		
 		this.setVisible(true);
 	}
 }
